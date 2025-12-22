@@ -95,7 +95,7 @@ def IO_pij_4dig(p, edge_df):
     
     Returns:
         None: This function saves results to .csv files.
-              Output files: 'IO_scgm_prob_edgelist_4dig_thr1/IO_scGM_prob_edgelist_{p}_thr1.csv'
+              Output files: 'IO_scgm_prob_edgelist_4dig/IO_scGM_prob_edgelist_{p}.csv'
               Contains columns: 'id_prov', 'id_inf', 'p_ij'
     """
     
@@ -127,7 +127,7 @@ def IO_pij_4dig(p, edge_df):
     df = pd.DataFrame(mat, index=list(a_out), columns=list(a_in))
     edge = df.stack().reset_index()
     edge.columns = ['id_prov','id_inf','p_ij']
-    edge.to_csv('IO_scgm_prob_edgelist_4dig_thr1/IO_scGM_prob_edgelist_{}_thr1.csv'.format(p))
+    edge.to_csv('IO_scgm_prob_edgelist_4dig/IO_scGM_prob_edgelist_{}.csv'.format(p))
 
 
 def IO_scGM(edge_df, products):
@@ -184,11 +184,11 @@ def IO_wij(p, edge_df):
     
     Returns:
         None: This function modifies and saves the .csv file but does not return a value.
-              Updates file: 'IO_scGM_prob_edgelist_4dig_thr1/IO_scGM_prob_edgelist_{p}_thr1.csv'
+              Updates file: 'IO_scGM_prob_edgelist_4dig/IO_scGM_prob_edgelist_{p}.csv'
               Adds column: 'w_ij' (ensemble weights)
     """
     temp = edge_df.loc[edge_df['ISIC_prov']==p]
-    sample = pd.read_csv('IO_scGM_prob_edgelist_4dig_thr1/IO_scGM_prob_edgelist_{}_thr1.csv'.format(p), index_col=0)
+    sample = pd.read_csv('IO_scGM_prob_edgelist_4dig/IO_scGM_prob_edgelist_{}.csv'.format(p), index_col=0)
     a = temp.copy()
 
     s_out = a.groupby('id_prov')['total_tax'].sum()
@@ -212,7 +212,7 @@ def IO_wij(p, edge_df):
     wijs = np.where(pijs!=0, (s_in.loc[f_in,'total_tax'].values*s_out[f_out].values*scale)/(w_tot*pijs), 0)
     sample['w_ij'] = wijs
     
-    sample.to_csv('IO_scGM_prob_edgelist_4dig_thr1/IO_scGM_prob_edgelist_{}_thr1.csv'.format(p))
+    sample.to_csv('IO_scGM_prob_edgelist_4dig/IO_scGM_prob_edgelist_{}.csv'.format(p))
 
 
 def IO_scGM_weights(edge_df, products):
@@ -266,12 +266,12 @@ def IO_sample(p):
               Saves files: 'IO_scGM_prob_edgelist_{p}_sample_{i}_thr1.npz' (i from 0 to 999)
     """
     
-    edge_df = pd.read_csv('IO_scGM_prob_edgelist_4dig_thr1/IO_scGM_prob_edgelist_{}_thr1.csv'.format(p), index_col=0)
+    edge_df = pd.read_csv('IO_scGM_prob_edgelist_4dig/IO_scGM_prob_edgelist_{}.csv'.format(p), index_col=0)
     probs = edge_df['p_ij'].to_numpy() 
     dim = np.size(probs)
 
     
-    newpath = r'C:\Users\massi\Desktop\Ecuador\IO_scGM_prob_edgelist_4dig_thr1\IO_scGM_prob_edgelist_{}_samples_thr1'.format(p) 
+    newpath = r'C:\Users\massi\Desktop\Ecuador\IO_scGM_prob_edgelist_4dig\IO_scGM_prob_edgelist_{}_samples'.format(p) 
     if not os.path.exists(newpath):
         os.makedirs(newpath)
    
@@ -280,7 +280,7 @@ def IO_sample(p):
         sample_mat = np.array(probs>np.random.sample(dim))
         samp_csc = scp.csc_matrix(sample_mat)
         
-        scp.save_npz('IO_scGM_prob_edgelist_4dig_thr1/IO_scGM_prob_edgelist_{}_samples_thr1/IO_scGM_prob_edgelist_{}_sample_{}_thr1.npz'.format(p,p,i), samp_csc)   
+        scp.save_npz('IO_scGM_prob_edgelist_4dig/IO_scGM_prob_edgelist_{}_samples/IO_scGM_prob_edgelist_{}_sample_{}.npz'.format(p,p,i), samp_csc)   
     
 
 def IO_network_sampling(products):
@@ -303,6 +303,7 @@ def IO_network_sampling(products):
     la = Parallel(n_jobs=num_cores)(delayed(IO_sample)(p) for p in products)
     
     return la
+
 
 
 
