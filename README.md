@@ -23,22 +23,23 @@ If you use this code in your research, please cite our paper:
 
 This repository provides implementations of the following network models:
 
-- **scGM (Sectoral Configuration Model)**: Implements the Sectoral Configuration Model for analyzing firm networks at different levels of ISIC aggregation, with support for both sector-specific and full network configurations.
+- **SCGM (Stripe-Corrected Gravity Model)**: reconstruction model for firm-level supply chain network, introduced in [Ialongo, L. N., de Valk, C., Marchese, E., Jansen, F., Zmarrou, H., Squartini, T., & Garlaschelli, D. (2022). Reconstructing firm-level interactions in the Dutch input–output network from production constraints. Scientific reports, 12(1), 11847].
+  
+- **IOGM (Input-Output Gravity Model)**: an extension of SCGM that makes use of sector-level aggregated information to reconstruct the network.
 
-- **IO_scGM (Input-Output Sectoral Configuration Model)**: An extension of scGM that incorporates sector-to-sector flows and scaling factors based on input-output relationships.
+- **DCGM (Directed Configuration Model)**: reconstruction model for interbank networks, introduced in [Cimini, G., Squartini, T., Garlaschelli, D., & Gabrielli, A. (2015). Systemic risk analysis on reconstructed economic and financial networks. Scientific reports, 5(1), 15758]
 
-- **dcGM (Directed Configuration Model)**: A directed configuration model that uses a single global z parameter computed from the entire network, allowing connections across all sectors.
-
-- **IO_maxent (Input-Output Maximum Entropy)**: Maximum entropy models for firm networks, available in both standard and Input-Output constrained variants.
+- **SCMM (Stripe-Corrected Maxent Model)**: SCGM-based variation of the standard MaxEnt reconstruction model for networks.
 
 ## Repository Structure
 
 All code implementations are stored in the `scripts/` folder:
 
-- `scGM.py` - Sectoral Configuration Model implementation
-- `IO_scGM.py` - Input-Output Sectoral Configuration Model implementation
-- `dcGM.py` - Directed Configuration Model implementation
-- `IO_maxent.py` - Maximum Entropy Model implementations- `SCGM_usage_example.py` - Example usage script demonstrating how to use the scGM module
+- `SCGM.py` - SCGM implementation
+- `IOGM.py` - IOGM implementation
+- `DCGM.py` - DCGM implementation
+- `SCMM.py` - SCMM
+- `SCGM_usage_example.py` - Example usage script demonstrating how to use the SCGM module
 
 - ## Requirements
 
