@@ -1,13 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Directed Configuration Model (dcGM) implementation for network analysis.
-
-This module implements the Directed Configuration Model for analyzing firm networks
-using a single global z parameter computed from the entire network. Unlike scGM which
-can work at sector-specific or full network levels, dcGM always uses the full network
-to compute connection probabilities, allowing connections between any firms across
-all sectors based on their global strengths.
-
 Created on Wed Oct 11 14:55:07 2023
 
 @author: massi
@@ -279,6 +271,7 @@ def network_sampling(products):
     la = Parallel(n_jobs=num_cores)(delayed(sample)(p) for p in products)
     
     return la
+
 
 
 
