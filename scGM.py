@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Sectoral Configuration Model (scGM) implementation for network analysis.
-
-This module implements the Sectoral Configuration Model for analyzing firm networks
-at different levels of ISIC (International Standard Industrial Classification) aggregation.
-It provides functions to compute connection probabilities, solve optimization problems,
-and generate synthetic network samples.
-
 Created on Tue Mar 28 12:09:16 2023
 
 @author: massi
@@ -147,7 +140,7 @@ def z_full_solver(z, edge_df, products):
     return d
 
 
-def z_full_solution(a, edge_df, products):
+def z_full_solution(a, edge_df, products, n_iterations):
     """
     Solves iteratively for the optimal z parameter for the full network.
     
@@ -163,6 +156,7 @@ def z_full_solution(a, edge_df, products):
                                    - 'id_prov': ID of the supplier firm (source)
                                    - 'total_tax': weight of the link from 'id_prov' to 'id_inf'
         products (list): List of ISIC 4-digit codes of sectors to include in the calculation.
+        n_iterations (int): Number of iterations to perform for convergence (10^2 were found to be enough on Ecuadorian network).
     
     Returns:
         float: Converged value of the z parameter after 200 iterations (fixed number of iterations).
@@ -271,7 +265,7 @@ def wij(p, edge_df):
     """
     Computes and assigns sample weights w_ij for the scGM probability edgelist.
     
-    This function calculates ensemble weights for edges based on the original tax data
+    This function calculates ensemble weights for edges based on the original data
     and the computed connection probabilities. The weights are computed as:
     w_ij = (s_in * s_out) / (w_tot * p_ij) when p_ij != 0, otherwise 0.
     
@@ -395,6 +389,7 @@ def network_sampling(products):
     la = Parallel(n_jobs=num_cores)(delayed(sample)(p) for p in products)
     
     return la
+
 
 
 
