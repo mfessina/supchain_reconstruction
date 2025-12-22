@@ -1,9 +1,8 @@
 # Reconstruction models for firm-level supply chain networks
 This repository contains implementations of several network configuration models for analyzing firm networks at different levels of aggregation. The models were developed and used in the research paper:
 
-**Inferring firm-level supply chain networks with realistic systemic risk from industry sector-level data** - *Fessina, Massimiliano and Cimini, Giulio and Squartini, Tiziano and Astudillo-Est{\'e}vez, Pablo and Thurner, Stefan and Garlaschelli, Diego* - *arXiv preprint* - *2024*
+**Inferring firm-level supply chain networks with realistic systemic risk from industry sector-level data** - *Fessina, Massimiliano and Cimini, Giulio and Squartini, Tiziano and Astudillo-Estévez, Pablo and Thurner, Stefan and Garlaschelli, Diego* - *arXiv preprint* - *2024*
 
-**arXiv:2408.02467**
 
 ## Citation
 
