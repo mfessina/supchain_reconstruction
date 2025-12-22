@@ -38,10 +38,10 @@ All code implementations are stored in the `scripts/` folder:
 - `SCGM.py` - SCGM implementation
 - `IOGM.py` - IOGM implementation
 - `DCGM.py` - DCGM implementation
-- `SCMM.py` - SCMM
+- `SCMM.py` - SCMM implementation
 - `SCGM_usage_example.py` - Example usage script demonstrating how to use the SCGM module
 
-- ## Requirements
+## Requirements
 
 The code requires the following Python packages:
 - `pandas`
