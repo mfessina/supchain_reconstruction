@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Usage example for the Sectoral Configuration Model (scGM).
+Usage example for the Stripe-Corrected Gravity Model (scGM).
 
 This script demonstrates how to use the scGM module to:
 1. Generate the scGM ensemble and compute connection probabilities
@@ -83,6 +83,7 @@ scGM_weights(edgelist, products)
 # To interpret the samples, use the firm IDs and link weights from 'scGM_prob_edgelist_{p}.csv'
 
 network_sampling(products)
+
 
 
 
