@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Input-Output Maximum Entropy Model (IO_maxent) implementation for network analysis.
-
-This module implements Maximum Entropy models for analyzing firm networks. It provides
-two variants: a standard maximum entropy model (IOMaxEnt) and an Input-Output constrained
-maximum entropy model (IOGMMaxEnt) that incorporates sectoral scaling factors based on
-input-output relationships between sectors.
-
 Created on Wed Oct 11 17:18:11 2023
 
 @author: massi
@@ -91,6 +84,7 @@ def SCMaxEnt(edge_df, products):
     la = Parallel(n_jobs=num_cores)(delayed(pij)(p,edge_df) for p in products)
     
     return la
+
 
 
 
