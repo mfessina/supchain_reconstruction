@@ -13,9 +13,9 @@ If you use this code in your research, please cite our paper:
   title   = {Inferring firm-level supply chain networks with realistic systemic risk from industry sector-level data},
   author  = {Fessina, Massimiliano and Cimini, Giulio and Squartini, Tiziano and
              Astudillo-Est{\'e}vez, Pablo and Thurner, Stefan and Garlaschelli, Diego},
-  journal = {arXiv preprint arXiv:2408.02467},
-  year    = {2024},
-  doi     = {10.48550/arXiv.2408.02467}
+  journal = {Scientific Reports},
+  year    = {2026},
+  doi     = {10.1038/s41598-026-47883-y}
 }
 ```
 
